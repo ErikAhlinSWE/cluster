@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: yagolangsite
-          image: erikswe/ya123
+          image: git.systemator.se/ahlin.erik/ya123
           ports:
             - containerPort: 8080
           env:
