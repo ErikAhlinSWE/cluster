@@ -1,0 +1,1 @@
+kubectl --kubeconfig=.\kubeconfig.yaml rollout restart -n yatest deployment yagolangsite

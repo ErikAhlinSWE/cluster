@@ -1,45 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yagolangsite
+  name: staticwebserver
   namespace: yatest
   labels:
-    app: yagolangsite
+    app: staticwebserver
 spec:
-  replicas: 3
+  replicas: 3 #scale out!!!!
   selector:
     matchLabels:
-      app: yagolangsite
+      app: staticwebserver
   template:
     metadata:
       labels:
-        app: yagolangsite
+        app: staticwebserver
     spec:
       containers:
-        - name: yagolangsite
-          image: erikswe/ya123
+        - name: staticwebserver
+          image: yeasy/simple-web
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           env:
-            - name: RUNENVIRONMENT
+            - name: ASPNETCORE_ENVIRONMENT
               value: Production
-      imagePullSecrets:
-      - name: regcred
 ---
 apiVersion: v1
 kind: Service
 metadata:
   namespace: yatest
-  name: yagolangsite-service
+  name: staticwebserver-service
   labels:
-    app: yagolangsite
+    app: staticwebserver
 spec:
   type: ClusterIP
   ports:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 80
   selector:
-    app: yagolangsite
+    app: staticwebserver
   sessionAffinity: None

@@ -1,6 +1,6 @@
-kubectl --kubeconfig=./kubeconfig.yaml exec  -it mysql-5dfdc67bc7-2kgs4 sh --namespace=yatest
+kubectl --kubeconfig=./kubeconfig.yaml exec  -it mysql-6dcffc8448-t5zhk   sh --namespace=yatest
 mysql -p
-lösenordet
+lösenordet: hejsan123
 create database Salary;
 exit
 exit
