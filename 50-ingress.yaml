@@ -17,6 +17,16 @@ spec:
                 name: yagolangsite-service
                 port:
                   number: 80
+    - host: "pythonsite0115.crabdance.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: yapythonsite-service
+                port:
+                  number: 80
     - host: "erikssupersajt.chickenkiller.com"
       http:
         paths:
@@ -27,3 +37,4 @@ spec:
                 name: staticwebserver-service
                 port:
                   number: 80
+

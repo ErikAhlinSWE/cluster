@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yagolangsite
+  name: yapythonsite
   namespace: yatest
   labels:
-    app: yagolangsite
+    app: yapythonsite
 spec:
   replicas: 3 #scale out!!!!
   selector:
     matchLabels:
-      app: yagolangsite
+      app: yapythonsite
   template:
     metadata:
       labels:
-        app: yagolangsite
+        app: yapythonsite
     spec:
       containers:
-        - name: yagolangsite
-          image: git.systementor.se/ahlin.erik/ya1234
+        - name: yapythonsite
+          image: git.systementor.se/ahlin.erik/cloudstartpythonapi250115
           ports:
-            - containerPort: 8080
+            - containerPort: 5000
           env:
             - name: RUNENVIRONMENT
               value: Production
@@ -30,16 +30,16 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: yatest
-  name: yagolangsite-service
+  name: yapythonsite-service
   labels:
-    app: yagolangsite
+    app: yapythonsite
 spec:
   type: ClusterIP
   ports:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 5000
   selector:
-    app: yagolangsite
+    app: yapythonsite
   sessionAffinity: None
