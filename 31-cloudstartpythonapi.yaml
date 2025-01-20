@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: yapythonsite
-          image: git.systementor.se/ahlin.erik/cloudstartpythonapi250115
+          image: git.systementor.se/ahlin.erik/cloudpythonapi
           ports:
             - containerPort: 5000
           env:

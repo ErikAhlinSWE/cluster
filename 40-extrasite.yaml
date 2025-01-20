@@ -17,11 +17,11 @@ spec:
     spec:
       containers:
         - name: staticwebserver
-          image: yeasy/simple-web
+          image: erikswe/webpageimage
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           env:
-            - name: ASPNETCORE_ENVIRONMENT
+            - name: RUNENVIRONMENT
               value: Production
 ---
 apiVersion: v1
@@ -37,7 +37,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 80
+    targetPort: 8080
   selector:
     app: staticwebserver
   sessionAffinity: None

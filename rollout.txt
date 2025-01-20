@@ -1,2 +1,3 @@
+kubectl --kubeconfig=.\kubeconfig.yaml rollout restart -n yatest deployment yapythonsite
 kubectl --kubeconfig=.\kubeconfig.yaml rollout restart -n yatest deployment yagolangsite
 kubectl --kubeconfig=.\kubeconfig.yaml rollout restart -n yatest deployment staticwebserver-service

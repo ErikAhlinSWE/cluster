@@ -1,3 +1,6 @@
+kubectl --kubeconfig=kubeconfig.yaml --namespace=yatest get pods --namespace yatest
+mysql-6dcffc8448-vg5rf 
+
 kubectl --kubeconfig=./kubeconfig.yaml exec  -it mysql-6dcffc8448-t5zhk   sh --namespace=yatest
 mysql -p
 lösenordet: hejsan123
