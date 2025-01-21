@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: yatest
+  name: pvc-registry
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: linode-block-storage
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitea
+  namespace: yatest
+  labels:
+    app: gitea
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitea
+  template:
+    metadata:
+      labels:
+        app: gitea
+    spec:
+      containers:
+      - name: gitea
+        image: gitea/gitea
+        ports:
+          - containerPort: 3000
+        env:
+          - name: USER_UID
+            value: "1000"
+          - name: USER_GID
+            value: "1000"
+          - name: RUNENVIRONMENT
+            value: Production
+          - name: GITEA__database__DB_TYPE
+            value: mysql
+          - name: GITEA__database__HOST
+            value: mysqlserver1
+          - name: GITEA__database__NAME
+            value: gitea
+          - name: GITEA__database__USER
+            value: root
+          - name: GITEA__database__PASSWD
+            value: hejsan123
+        volumeMounts:
+        - name: pvc-registry
+          mountPath: /data
+      volumes:
+      - name: pvc-registry
+        persistentVolumeClaim:
+          claimName: pvc-registry
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: yatest
+  name: gitea-service
+  labels:
+    app: gitea
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: gitea
+  sessionAffinity: None
