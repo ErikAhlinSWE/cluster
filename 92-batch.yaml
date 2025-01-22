@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   namespace: yatest
-  name: sqlbackupsalary
+  name: sqlbackupgamedatabase
 spec:
   schedule: "0 1 * * *"
   jobTemplate:
@@ -10,8 +10,8 @@ spec:
       template:
         spec:
           containers:
-          - name: sqlbackupsalary
-            image: eriksgitea.crabdance.com/erikahlin/batchsql
+          - name: sqlbackupgamedatabase
+            image: git.systementor.se/ahlin.erik/batchsql
             env:
               - name: sql_host
                 value: mysqlserver1  
@@ -20,7 +20,7 @@ spec:
               - name: sql_password
                 value: hejsan123   
               - name: sql_database
-                value: Salary
+                value: gamedatabase
           imagePullSecrets:
           - name: regcred
           restartPolicy: OnFailure
