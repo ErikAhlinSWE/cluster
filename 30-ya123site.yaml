@@ -24,7 +24,7 @@ spec:
             - name: RUNENVIRONMENT
               value: Production
       imagePullSecrets:
-      - name: regcred
+      - name: regcred1
 ---
 apiVersion: v1
 kind: Service
