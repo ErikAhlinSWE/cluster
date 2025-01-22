@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  namespace: yatest
+  name: helloprint
+spec:
+  schedule: "30 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: nattbatch1
+            image: eriksgitea.crabdance.com/erikahlin/batch1
+          imagePullSecrets:
+          - name: regcred
+          restartPolicy: OnFailure

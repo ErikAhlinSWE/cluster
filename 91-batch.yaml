@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  namespace: yatest
+  name: sqlbackupsalary
+spec:
+  schedule: "0 1 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: sqlbackupsalary
+            image: eriksgitea.crabdance.com/erikahlin/batchsql
+            env:
+              - name: sql_host
+                value: mysqlserver1  
+              - name: sql_user
+                value: sa
+              - name: sql_password
+                value: hejsan123   
+              - name: sql_database
+                value: Salary
+          imagePullSecrets:
+          - name: regcred
+          restartPolicy: OnFailure
