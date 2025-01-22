@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   namespace: yatest
-  name: sqlbackupgamedatabase
+  name: sqlbackuppythoncrud
 spec:
   schedule: "0 1 * * *"
   jobTemplate:
@@ -10,7 +10,7 @@ spec:
       template:
         spec:
           containers:
-          - name: sqlbackupgamedatabase
+          - name: sqlbackuppythoncrud
             image: git.systementor.se/ahlin.erik/batchsql
             env:
               - name: sql_host
@@ -20,7 +20,7 @@ spec:
               - name: sql_password
                 value: hejsan123   
               - name: sql_database
-                value: gamedatabase
+                value: pythoncrud
           imagePullSecrets:
           - name: regcred
           restartPolicy: OnFailure
