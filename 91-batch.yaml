@@ -16,7 +16,7 @@ spec:
               - name: sql_host
                 value: mysqlserver1  
               - name: sql_user
-                value: sa
+                value: root
               - name: sql_password
                 value: hejsan123   
               - name: sql_database
