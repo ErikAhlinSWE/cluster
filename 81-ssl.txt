@@ -1,0 +1,4 @@
+kubectl  --kubeconfig=./kubeconfig.yaml apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.4/cert-manager.yaml
+
+kubectl get certificaterequests -n yatest
+kubectl --kubeconfig=./kubeconfig.yaml  describe  certificaterequests letsencrypt-prod-1   -n yatest    

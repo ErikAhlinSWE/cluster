@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: yatest
+  name: sites2
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod    
+    nginx.ingress.kubernetes.io/proxy-body-size: "30720m"
+spec:
+  rules:
+    - host: "eriksgitea.crabdance.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: gitea-service
+                port:
+                  number: 80
+  tls:
+  - hosts:
+    - eriksgitea.crabdance.com # your domain 
+    secretName: letsencrypt-prod

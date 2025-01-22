@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: yagolangsite
-          image: git.systementor.se/ahlin.erik/ya1234
+          image: eriksgitea.crabdance.com/erikahlin/golangapi
           ports:
             - containerPort: 8080
           env:
