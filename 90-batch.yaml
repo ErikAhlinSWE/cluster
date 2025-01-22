@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
           - name: nattbatch1
-            image: eriksgitea.crabdance.com/erikahlin/batch1
+            image: git.systementor.se/ahlin.erik/batch1
           imagePullSecrets:
           - name: regcred
           restartPolicy: OnFailure
