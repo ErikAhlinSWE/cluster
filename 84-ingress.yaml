@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: "30720m"
 spec:
   rules:
-    - host: "eriksgitea.crabdance.com"
+    - host: "eriksgitea.mooo.com"
       http:
         paths:
           - pathType: Prefix
@@ -21,5 +21,5 @@ spec:
                   number: 80
   tls:
   - hosts:
-    - eriksgitea.crabdance.com # your domain 
+    - eriksgitea.mooo.com # your domain 
     secretName: letsencrypt-prod
